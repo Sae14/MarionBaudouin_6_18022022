@@ -37,5 +37,5 @@ Usage :
 Run nodemon/node server.
 If your browser fails to launch, or shows a 404 error, navigate your browser to http://localhost:3000.
 
-Database : MongoDB Atlas
+Database : MongoDB Atlas. 
 Env. Variables about : Port / Secret Token / MongoDB Access
