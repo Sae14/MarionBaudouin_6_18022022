@@ -3,11 +3,12 @@ Compétences évaluées :
 - Stocker des données de manière sécurisée
 - Mettre en œuvre des opérations CRUD de manière sécurisée
 
+
 HOT TAKES
 
-----------------FRONTEND----------------
+---------------------------------------------------------------FRONTEND-----------------------------------------------
 
-Installation
+Installation : 
 Here are the dependancies you need to install:
 
 NodeJS 12.14 or 14.0.
@@ -17,7 +18,7 @@ On Windows, these installations require to use PowerShell in administrator mode.
 
 Then, clone this repo, run npm install, and run npm install --save-dev run-script-os.
 
-Usage
+Usage : 
 Run npm start. This should both run the local server and launch your browser.
 
 If your browser fails to launch, or shows a 404 error, navigate your browser to http://localhost:8080.
@@ -26,15 +27,15 @@ The app should reload automatically when you make a change to a file.
 
 Use Ctrl+C in the terminal to stop the local server.
 
-----------------BACKEND----------------
+---------------------------------------------------------------BACKEND-----------------------------------------------
 
-Installation
+Installation : 
 NodeJS 14.0
 Then, clone this repo, run npm install
 
-Usage
+Usage : 
 Run nodemon/node server.
 If your browser fails to launch, or shows a 404 error, navigate your browser to http://localhost:3000.
 
-Database : MongoDB Atlas
+Database : MongoDB Atlas. 
 Env. Variables about : Port / Secret Token / MongoDB Access
