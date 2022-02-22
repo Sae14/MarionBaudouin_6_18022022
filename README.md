@@ -6,7 +6,7 @@ Compétences évaluées :
 
 # HOT TAKES #
 
------------------------------------ ## FRONTEND ## ---------------------------------
+----------------------------------- ### FRONTEND ### ---------------------------------
 ### Installation : ### 
 Here are the dependancies you need to install:
 
@@ -26,7 +26,7 @@ The app should reload automatically when you make a change to a file.
 
 Use Ctrl+C in the terminal to stop the local server.
 
----------------------------------- ## BACKEND ## -----------------------------------
+---------------------------------- ### BACKEND ### -----------------------------------
 
 ### Installation : ### 
 NodeJS 14.0
@@ -37,4 +37,6 @@ Run nodemon/node server.
 If your browser fails to launch, or shows a 404 error, navigate your browser to `http://localhost:3000`.
 
 Database : MongoDB Atlas. 
-### GIT-IGNORE includes : ### - Env. Variables about : Port / Secret Token / MongoDB Logs - Images folder - Node_modules
+### GIT-IGNORE includes : ### 
+- Env. Variables about : Port / Secret Token / MongoDB Logs 
+- Images folder
