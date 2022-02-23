@@ -13,6 +13,8 @@ const sauceRoutes = require("./routes/sauce");
 
 const userRoutes = require("./routes/user");
 
+const rateLimit = require("express-rate-limit");
+
 mongoose
   .connect(MY_MONGODB_ACCESS, {
     useNewUrlParser: true,
@@ -22,6 +24,13 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
 const app = express();
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 200,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -39,6 +48,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/api", apiLimiter);
 app.use("/api/sauces", sauceRoutes);
 app.use("/api/auth", userRoutes);
 
