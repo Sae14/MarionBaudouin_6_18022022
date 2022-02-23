@@ -1,5 +1,7 @@
 const express = require("express");
 
+const helmet = require("helmet");
+
 const mongoose = require("mongoose");
 
 const dotenv = require("dotenv");
@@ -32,6 +34,8 @@ const apiLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+app.use(helmet({ crossOriginResourcePolicy: false }));
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -46,7 +50,6 @@ app.use((req, res, next) => {
 });
 
 app.use(express.json());
-
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api", apiLimiter);
 app.use("/api/sauces", sauceRoutes);
