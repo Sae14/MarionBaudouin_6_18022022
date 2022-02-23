@@ -10,7 +10,7 @@ exports.getAllSauces = (req, res, next) => {
   // Récupération de toutes les sauces
   Sauce.find()
     .then((sauces) => res.status(200).json(sauces))
-    .catch((error) => res.status(400).json({ error }));
+    .catch((error) => res.status(404).json({ error }));
 };
 
 exports.getOneSauce = (req, res, next) => {
@@ -31,7 +31,7 @@ exports.createSauce = (req, res, next) => {
   });
   sauce
     .save()
-    .then(() => res.status(201).json({ message: "Sauce sauvegardée" }))
+    .then(() => res.status(201).json({ message: "Nouvelle sauce sauvegardée" }))
     .catch((error) => res.status(400).json({ error }));
 };
 
@@ -73,7 +73,7 @@ exports.modifySauce = (req, res, next) => {
         return res.status(403).json({ message: "Unauthorized request" });
       }
     })
-    .catch((error) => res.status(400).json({ error }));
+    .catch((error) => res.status(500).json({ error }));
 };
 
 exports.deleteSauce = (req, res, next) => {
@@ -151,6 +151,6 @@ exports.likeSauce = (req, res, next) => {
             .catch((error) => res.status(400).json({ error }));
         }
       })
-      .catch((error) => res.status(400).json({ error }));
+      .catch((error) => res.status(500).json({ error }));
   }
 };

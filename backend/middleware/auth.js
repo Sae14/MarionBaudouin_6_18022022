@@ -14,6 +14,6 @@ module.exports = (req, res, next) => {
       next();
     }
   } catch (error) {
-    res.status(403).json({ error: error | "Requête non autorisée" });
+    res.status(401).json({ error: error | "Requête non autorisée" });
   }
 };
