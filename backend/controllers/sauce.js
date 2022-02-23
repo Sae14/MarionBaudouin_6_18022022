@@ -70,7 +70,7 @@ exports.modifySauce = (req, res, next) => {
             .catch((error) => res.status(400).json({ error }));
         }
       } else {
-        res.status(403).json({ message: "Unauthorized request" });
+        return res.status(403).json({ message: "Unauthorized request" });
       }
     })
     .catch((error) => res.status(400).json({ error }));
