@@ -44,6 +44,7 @@ exports.modifySauce = (req, res, next) => {
   Sauce.findOne({ _id: req.params.id })
     .then((sauce) => {
       if (userId == sauce.userId) {
+        // S'il y a modification de l'image :
         if (req.file) {
           const sauceObjectFile = {
             ...JSON.parse(req.body.sauce),
@@ -61,6 +62,7 @@ exports.modifySauce = (req, res, next) => {
               .catch((error) => res.status(400).json({ error }));
           });
         } else {
+          // S'il y a modification sans image :
           const sauceObject = { ...req.body };
           Sauce.updateOne(
             { _id: req.params.id },
@@ -104,6 +106,7 @@ exports.likeSauce = (req, res, next) => {
   const userLike = req.body.like;
   const sauceId = req.params.id;
 
+  // Si l'utilisateur like positivement :
   if (userLike == 1) {
     Sauce.updateOne(
       { _id: sauceId },
@@ -111,6 +114,8 @@ exports.likeSauce = (req, res, next) => {
     )
       .then(() => res.status(200).json({ message: "Like de la sauce ajouté" }))
       .catch((error) => res.status(400).json({ error }));
+
+    // Si l'utilisateur like négativement :
   } else if (userLike == -1) {
     Sauce.updateOne(
       {
@@ -122,9 +127,12 @@ exports.likeSauce = (req, res, next) => {
         res.status(200).json({ message: "Dislike de la sauce ajouté" })
       )
       .catch((error) => res.status(400).json({ error }));
+
+    // Si l'utilisateur reset son vote :
   } else if (userLike == 0) {
     Sauce.findOne({ _id: sauceId })
       .then((sauce) => {
+        // Si l'utilisateur avait initialement liké positivement :
         if (sauce.usersLiked.includes(userId)) {
           Sauce.updateOne(
             {
@@ -137,6 +145,8 @@ exports.likeSauce = (req, res, next) => {
               res.status(200).json({ message: "Like de la sauce retiré" })
             )
             .catch((error) => res.status(400).json({ error }));
+
+          // Si l'utilisateur avait initialement liké négativement :
         } else if (sauce.usersDisliked.includes(userId)) {
           Sauce.updateOne(
             {

@@ -8,6 +8,8 @@ const auth = require("../middleware/auth");
 
 const multer = require("../middleware/multer-config");
 
+// Mise en place des routes sauce avec authentification obligatoire :
+
 router.get("/", auth, sauceCtrl.getAllSauces);
 
 router.get("/:id", auth, sauceCtrl.getOneSauce);

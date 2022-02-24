@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const MY_SECRET = process.env.SECRET;
 
 module.exports = (req, res, next) => {
+  // Authentification de l'utilisateur : vérification si le userId de la requête correspond à celui du token de connexion de l'utilisateur
   try {
     const token = req.headers.authorization.split(" ")[1];
     const decodedToken = jwt.verify(token, MY_SECRET);

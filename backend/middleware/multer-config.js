@@ -7,6 +7,7 @@ const MIME_TYPES = {
 };
 
 const storage = multer.diskStorage({
+  // Configuration de multer : indication de la destination du fichier et changement de son nom
   destination: (req, file, callback) => {
     callback(null, "images");
   },
@@ -17,6 +18,7 @@ const storage = multer.diskStorage({
   },
 });
 
+// Ajout d'une limite de 10Mo maximal par fichier :
 module.exports = multer({ storage, limits: { fileSize: 10000000 } }).single(
   "image"
 );

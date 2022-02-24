@@ -17,16 +17,18 @@ const userRoutes = require("./routes/user");
 
 const rateLimit = require("express-rate-limit");
 
+// Connexion à la base de données MongoDB :
 mongoose
   .connect(MY_MONGODB_ACCESS, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connexion à MongoDB réussie !"))
-  .catch(() => console.log("Connexion à MongoDB échouée !"));
+  .then(() => console.log("Connexion à MongoDB réussie"))
+  .catch(() => console.log("Connexion à MongoDB échouée"));
 
 const app = express();
 
+// Configuration du limiteur de requêtes :
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 200,
@@ -34,8 +36,10 @@ const apiLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Configuration de helmet :
 app.use(helmet({ crossOriginResourcePolicy: false }));
 
+// Configuration des CORS :
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(

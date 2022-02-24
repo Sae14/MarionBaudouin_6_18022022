@@ -7,6 +7,7 @@ const User = require("../models/User");
 const MY_SECRET = process.env.SECRET;
 
 exports.signup = (req, res, next) => {
+  // Inscription de l'utilisateur en hachant le mot de passe
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -23,6 +24,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
+  // Connexion de l'utilisateur en comparant les informations fournies avec celles de la base de données
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {

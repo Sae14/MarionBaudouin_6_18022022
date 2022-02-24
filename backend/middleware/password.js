@@ -1,7 +1,7 @@
 const passwordValidator = require("password-validator");
 
 const passwordSchema = new passwordValidator();
-
+// Renforcement du choix de mot de passe à la création de compte :
 passwordSchema
   .is()
   .min(8)
